@@ -8,5 +8,7 @@ import org.springframework.core.metrics.ApplicationStartup;
 public class LibraryManagementApplication {
     public static void main(String[] args) {
         SpringApplication.run(LibraryManagementApplication.class, args);
+        System.out.println("Done");
+        // Easy
     }
 }
