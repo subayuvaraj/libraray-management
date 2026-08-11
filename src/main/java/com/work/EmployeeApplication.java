@@ -31,6 +31,19 @@ public class EmployeeApplication {
         fetchEmployeeByJoiningDate(employees);
 
     }
+
+    private static void fetchEmployeeByJoiningDate(List<Employee> employees) {
+
+        List<LocalDate> joiningdates = employees.stream().map(employee -> employee.getJoiningDate()).distinct().toList();
+        for (int i=1;i<=joiningdates.size();i++)
+            System.out.println(i+". "+joiningdates.get(i-1) +"\n");
+        Scanner scanner=new Scanner(System.in);
+        System.out.println("enter the joining date index to get the employee name");
+        int  choice= scanner.nextInt();
+        List<Employee> employeeList= employees.stream().filter(employee -> employee.getJoiningDate().equals(joiningdates.get(choice-1))).toList();
+        employeeList.forEach(System.out::println);
+    }
+
     public static void fetchEmployeeNames(List<Employee> employees) {
         final int j = 0;
         for (int i = 0; i < employees.size(); i++) {
@@ -52,5 +65,5 @@ public class EmployeeApplication {
     private static void printEmployeeCount(List<Employee> employees) {
         System.out.println("Total Number of Emplyees are" + employees.stream().count());
     }
-    
+
 }
