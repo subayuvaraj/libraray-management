@@ -29,7 +29,22 @@ public class EmployeeApplication {
         fetchEmployeeByCity(employees);
         printEmployeeCount(employees);
         fetchEmployeeByJoiningDate(employees);
+        sortEmployeesBySalaryAscendingOrder(employees);
+        sortEmployeesByFirstThenLastName(employees);
+        fetchHigestPaidEmployee(employees);
 
+    }
+
+    private static void fetchHigestPaidEmployee(List<Employee> employees) {
+        employees.stream().max(Comparator.comparing(Employee::getSalary));
+    }
+
+    private static void sortEmployeesByFirstThenLastName(List<Employee> employees) {
+        employees.stream().sorted(Comparator.comparing((Employee employee) -> employee.getFirstName()).thenComparing(employee -> employee.getLastName()));
+    }
+
+    private static void sortEmployeesBySalaryAscendingOrder(List<Employee> employees) {
+        employees.stream().sorted(Comparator.comparing(employee -> employee.getSalary())).toList();
     }
 
     private static void fetchEmployeeByJoiningDate(List<Employee> employees) {
