@@ -31,20 +31,28 @@ public class EmployeeApplication {
         fetchEmployeeByJoiningDate(employees);
         sortEmployeesBySalaryAscendingOrder(employees);
         sortEmployeesByFirstThenLastName(employees);
-        fetchHigestPaidEmployee(employees);
+        fetchHighestPaidEmployee(employees);
+        fetchLeastPaidEmployee(employees);
 
     }
 
-    private static void fetchHigestPaidEmployee(List<Employee> employees) {
-        employees.stream().max(Comparator.comparing(Employee::getSalary));
+    private static void fetchLeastPaidEmployee(List<Employee> employees) {
+        System.out.println("LeastPaidEmployee : " + employees.stream().min(Comparator.comparing(Employee::getSalary)).get().getSalary());
+    }
+
+    private static void fetchHighestPaidEmployee(List<Employee> employees) {
+        System.out.println( "HighPaidEmployee : " + employees.stream().max(Comparator.comparing(Employee::getSalary)).get().getSalary());
+      //  employees.stream().max(Comparator.comparing(Employee::getSalary));
     }
 
     private static void sortEmployeesByFirstThenLastName(List<Employee> employees) {
-        employees.stream().sorted(Comparator.comparing((Employee employee) -> employee.getFirstName()).thenComparing(employee -> employee.getLastName()));
+        System.out.println("SortedOrderOfEmployee : "+ employees.stream().sorted(Comparator.comparing((Employee employee) -> employee.getFirstName()).thenComparing(employee -> employee.getLastName())).toList());
+       // employees.stream().sorted(Comparator.comparing((Employee employee) -> employee.getFirstName()).thenComparing(employee -> employee.getLastName()));
     }
 
     private static void sortEmployeesBySalaryAscendingOrder(List<Employee> employees) {
-        employees.stream().sorted(Comparator.comparing(employee -> employee.getSalary())).toList();
+        System.out.println("SortedOrderOfEmployeebySalary : "+ employees.stream().sorted(Comparator.comparing(employee -> employee.getSalary())).toList());
+       // employees.stream().sorted(Comparator.comparing(employee -> employee.getSalary())).toList();
     }
 
     private static void fetchEmployeeByJoiningDate(List<Employee> employees) {
