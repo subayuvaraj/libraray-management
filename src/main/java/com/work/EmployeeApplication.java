@@ -33,7 +33,12 @@ public class EmployeeApplication {
         sortEmployeesByFirstThenLastName(employees);
         fetchHighestPaidEmployee(employees);
         fetchLeastPaidEmployee(employees);
+        fetchSkills(employees);
 
+    }
+
+    private static void fetchSkills(List<Employee> employees) {
+        System.out.println(employees.stream().flatMap(employee -> employee.getSkills()).distinct().toList());
     }
 
     private static void fetchLeastPaidEmployee(List<Employee> employees) {
