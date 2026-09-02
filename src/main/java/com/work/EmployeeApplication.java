@@ -38,7 +38,10 @@ public class EmployeeApplication {
     }
 
     private static void fetchSkills(List<Employee> employees) {
-        System.out.println(employees.stream().flatMap(employee -> employee.getSkills()).distinct().toList());
+        System.out.println(
+                employees.stream().
+                        flatMap(employee -> employee.getSkills().stream().
+                                map(Skill::getSkillName)).distinct().toList());
     }
 
     private static void fetchLeastPaidEmployee(List<Employee> employees) {
