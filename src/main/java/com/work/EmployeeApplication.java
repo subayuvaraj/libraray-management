@@ -34,8 +34,17 @@ public class EmployeeApplication {
         fetchHighestPaidEmployee(employees);
         fetchLeastPaidEmployee(employees);
         fetchSkills(employees);
+        fetchJavaemployees(employees);
 
     }
+
+    private static void fetchJavaemployees(List<Employee> employees) {
+        System.out.println(employees.stream()
+                .filter(employee ->
+                        employee.getSkills().stream()
+                                .anyMatch(skill ->
+                                        skill.getSkillName().equalsIgnoreCase("Java")))
+                .toList());    }
 
     private static void fetchSkills(List<Employee> employees) {
         System.out.println(
