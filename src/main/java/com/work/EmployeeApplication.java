@@ -35,7 +35,11 @@ public class EmployeeApplication {
         fetchLeastPaidEmployee(employees);
         fetchSkills(employees);
         fetchJavaemployees(employees);
+        fetchEmployeesByMoreThanThreeSkills(employees);
+    }
 
+    private static void fetchEmployeesByMoreThanThreeSkills(List<Employee> employees) {
+        System.out.println(employees.stream().map(employee -> employee.getSkills().stream().map(skill -> skill.getSkillName()).count()));
     }
 
     private static void fetchJavaemployees(List<Employee> employees) {
