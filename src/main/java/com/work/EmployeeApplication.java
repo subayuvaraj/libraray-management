@@ -36,10 +36,12 @@ public class EmployeeApplication {
         fetchSkills(employees);
         fetchJavaemployees(employees);
         fetchEmployeesByMoreThanThreeSkills(employees);
+
     }
 
     private static void fetchEmployeesByMoreThanThreeSkills(List<Employee> employees) {
-        System.out.println(employees.stream().map(employee -> employee.getSkills().stream().map(skill -> skill.getSkillName()).count()));
+        employees.stream().filter(employee->employee.getSkills().size()>3).forEach(System.out::println);
+
     }
 
     private static void fetchJavaemployees(List<Employee> employees) {
