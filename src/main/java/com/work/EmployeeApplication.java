@@ -41,6 +41,9 @@ public class EmployeeApplication {
 
     private static void fetchEmployeesByMoreThanThreeSkills(List<Employee> employees) {
         employees.stream().filter(employee->employee.getSkills().size()>3).forEach(System.out::println);
+        employees.stream().filter(employee->employee.getSkills().size()>3).forEach(System.out::println);
+
+
 
     }
 
